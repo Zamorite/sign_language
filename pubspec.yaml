@@ -25,6 +25,7 @@ flutter:
   assets:
     - assets/images/svgs/alpha/
     - assets/images/svgs/misc/
+    - assets/images/svgs/textures/
   # fonts:
   #   - family: Schyler
   #     fonts:

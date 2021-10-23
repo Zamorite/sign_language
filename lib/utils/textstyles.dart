@@ -6,4 +6,8 @@ class SLCTextStyles {
     color: SLCColors.white,
     fontSize: 24,
   );
+  static const TextStyle input = TextStyle(
+    color: SLCColors.darkBlue,
+    fontSize: 22,
+  );
 }

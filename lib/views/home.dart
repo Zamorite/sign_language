@@ -3,6 +3,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:slc/utils/assets.dart';
 import 'package:slc/utils/colors.dart';
+import 'package:slc/utils/rrect.shape.dart';
 import 'package:slc/utils/textstyles.dart';
 
 class HomeView extends StatelessWidget {
@@ -29,38 +30,67 @@ class HomeView extends StatelessWidget {
                     height: double.infinity,
                     child: SafeArea(
                       bottom: false,
-                      child: KeyboardVisibilityBuilder(
-                        builder: (context, _visible) {
-                          return Column(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      kIdleSign,
-                                      height:
-                                          ((_visible ? .1 : .2) * _size.height),
+                      child: Stack(
+                        children: [
+                          Container(
+                            color: Colors.yellow,
+                            child: SvgPicture.asset(
+                              kBg,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          KeyboardVisibilityBuilder(
+                            builder: (context, _visible) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                          kIdleSign,
+                                          height: ((_visible ? .1 : .2) *
+                                              _size.height),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: .05 * _size.height,
+                                          ),
+                                          child: const Text(
+                                            'O',
+                                            style: SLCTextStyles.display,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: .05 * _size.height,
-                                      ),
-                                      child: const Text(
-                                        'O',
-                                        style: SLCTextStyles.display,
+                                  ),
+                                  Container(
+                                    height: _visible ? 0 : (.1 * _size.height),
+                                    color: SLCColors.black,
+                                    child: Offstage(
+                                      offstage: _visible,
+                                      child: SliderTheme(
+                                        data: SliderTheme.of(context).copyWith(
+                                          thumbShape:
+                                              const RoundRectSliderThumbShape(),
+                                        ),
+                                        child: Slider(
+                                          activeColor: SLCColors.white,
+                                          thumbColor: SLCColors.white,
+                                          inactiveColor: SLCColors.black,
+                                          value: .5,
+                                          onChanged: (v) {},
+                                        ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                height: _visible ? 0 : (.1 * _size.height),
-                                color: SLCColors.black,
-                              )
-                            ],
-                          );
-                        },
+                                  )
+                                ],
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -91,6 +121,7 @@ class HomeView extends StatelessWidget {
                     KeyboardVisibilityBuilder(
                       builder: (context, _visible) {
                         return Offstage(
+                          // offstage: false,
                           offstage: !_visible,
                           child: Transform.translate(
                             offset: Offset(
@@ -102,15 +133,25 @@ class HomeView extends StatelessWidget {
                                 horizontal: .1 * _size.width,
                               ),
                               padding: EdgeInsets.symmetric(
-                                horizontal: .1 * _size.width,
+                                horizontal: .05 * _size.width,
                               ),
                               decoration: BoxDecoration(
-                                color: SLCColors.grey,
+                                color: SLCColors.lightBlue,
                                 borderRadius: BorderRadius.circular(9),
                               ),
                               height: .1 * _size.height,
-                              child: TextField(
-                                focusNode: _node,
+                              child: Container(
+                                // color: Colors.red,
+                                child: Center(
+                                  child: TextField(
+                                    focusNode: _node,
+                                    style: SLCTextStyles.input,
+                                    decoration: const InputDecoration(
+                                      border: InputBorder.none,
+                                    ),
+                                    cursorColor: SLCColors.blue,
+                                  ),
+                                ),
                               ),
                             ),
                           ),

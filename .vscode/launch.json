@@ -1,0 +1,77 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Current Device",
+			"request": "launch",
+			"type": "dart"
+		},
+		{
+			"name": "Android",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "SM A125F"
+		},
+		{
+			"name": "Emu",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "sdk gphone x86"
+		},
+		{
+			"name": "Sim",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "iPhone 12 Pro Max"
+		},
+		{
+			"name": "Sim Mini",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "iPhone 12 mini"
+		},
+		{
+			"name": "iPhone",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "iPhone"
+		},
+		{
+			"name": "alex",
+			"request": "launch",
+			"type": "dart",
+			"deviceId": "Alexandre’s iPhone"
+		},
+		{
+			"name": "iProfile",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "profile",
+			"deviceId": "iPhone"
+		},
+		{
+			"name": "aProfile",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "profile",
+			"deviceId": "SM A125F"
+		},
+	],
+	"compounds": [
+		{
+			"name": "All Devices",
+			"configurations": [
+				"Android",
+				"iPhone"
+			],
+		},
+		{
+			"name": "Simulators",
+			"configurations": [
+				"Emu",
+				"Sim",
+				"Sim Mini"
+			],
+		},
+	]
+}

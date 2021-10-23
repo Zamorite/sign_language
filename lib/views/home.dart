@@ -138,6 +138,12 @@ class HomeView extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: SLCColors.lightBlue,
                                 borderRadius: BorderRadius.circular(9),
+                                // boxShadow: const [
+                                //   BoxShadow(
+                                //     blurRadius: 10,
+                                //     spreadRadius: -10,
+                                //   ),
+                                // ],
                               ),
                               height: .1 * _size.height,
                               child: Container(
@@ -150,6 +156,9 @@ class HomeView extends StatelessWidget {
                                       border: InputBorder.none,
                                     ),
                                     cursorColor: SLCColors.blue,
+                                    onSubmitted: (v) {
+                                      FocusScope.of(context).unfocus();
+                                    },
                                   ),
                                 ),
                               ),
